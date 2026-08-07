@@ -59,4 +59,4 @@ steps:
       - git add keymap-drawer/
       - if git diff --cached --quiet; then echo "no changes to commit"; exit 0; fi
       - git commit -m "keymap-drawer render [skip ci]"
-      - git push "https://oauth2:$${FORGEJO_TOKEN}@forgejo.kudofools.dev/izayoilv/zmk-config.git" HEAD:${CI_COMMIT_BRANCH}
+      - git push "https://oauth2:$${FORGEJO_TOKEN}@forgejo.kudofools.dev/izayoilv/zmk-config.git" HEAD:$${CI_COMMIT_BRANCH}

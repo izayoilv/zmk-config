@@ -20,7 +20,7 @@ steps:
       - |
         for i in $(seq 1 5); do
           echo "$REGISTRY_PASSWORD" | oras login --plain-http registry-service.registry.svc:5000 -u admin --password-stdin \
-            && oras pull --plain-http registry-service.registry.svc:5000/zmk-firmware:sha-${CI_COMMIT_SHA} -o firmware \
+            && oras pull --plain-http registry-service.registry.svc:5000/zmk-firmware:sha-$${CI_COMMIT_SHA} -o firmware \
             && exit 0
           echo "registry op failed (attempt $i/5), retrying in 10s..."
           sleep 10

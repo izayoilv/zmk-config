@@ -82,7 +82,7 @@ steps:
       - |
         for i in $(seq 1 5); do
           echo "$REGISTRY_PASSWORD" | oras login --plain-http registry-service.registry.svc:5000 -u admin --password-stdin \
-            && oras push --plain-http registry-service.registry.svc:5000/zmk-firmware:sha-${CI_COMMIT_SHA} $files \
+            && oras push --plain-http registry-service.registry.svc:5000/zmk-firmware:sha-$${CI_COMMIT_SHA} $files \
             && exit 0
           echo "registry op failed (attempt $i/5), retrying in 10s..."
           sleep 10
