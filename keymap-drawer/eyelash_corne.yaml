@@ -27,8 +27,8 @@ layers:
   - J
   - K
   - L
-  - ;
   - {t: '''', s: '"'}
+  - '&td0'
   - LCTRL
   - {t: Z, h: Button}
   - {t: X, h: LALT}
@@ -42,12 +42,12 @@ layers:
   - {t: ',', h: RALT}
   - {t: ., h: LALT}
   - {t: /, h: Button}
-  - ESC
+  - RCTRL
   - {t: LGUI, h: Media}
   - Nav
   - {t: SPACE, h: Mouse}
   - {t: RET, h: Sym}
-  - Num
+  - {t: ESC, h: Num}
   - {t: DEL, h: Fun}
   Extra:
   - TAB
@@ -76,8 +76,8 @@ layers:
   - J
   - K
   - L
-  - ;
   - {t: '''', s: '"'}
+  - '&td0'
   - LCTRL
   - Z
   - X
@@ -91,12 +91,12 @@ layers:
   - ','
   - .
   - /
-  - ESC
+  - RCTRL
   - LGUI
   - ''
   - TAB
   - RET
-  - ''
+  - {t: ESC, h: Num}
   - DEL
   Tap:
   - TAB
@@ -125,8 +125,8 @@ layers:
   - J
   - K
   - L
-  - ;
   - {t: '''', s: '"'}
+  - '&td0'
   - LCTRL
   - Z
   - X
@@ -140,12 +140,12 @@ layers:
   - ','
   - .
   - /
-  - ESC
+  - RCTRL
   - LGUI
   - ''
   - TAB
   - RET
-  - ''
+  - {t: ESC, h: Num}
   - DEL
   Button:
   - TAB
@@ -175,7 +175,7 @@ layers:
   - ''
   - ''
   - ''
-  - {t: '''', s: '"'}
+  - '&td0'
   - LCTRL
   - {t: UNDO, type: held}
   - Sft+DEL
@@ -189,7 +189,7 @@ layers:
   - Ctl+INS
   - Sft+DEL
   - UNDO
-  - ESC
+  - RCTRL
   - '&mkp MB3'
   - '&mkp MB1'
   - '&mkp MB2'
@@ -200,7 +200,7 @@ layers:
   - TAB
   - '&bootloader'
   - '&u_to_U_TAP'
-  - ''
+  - '&u_to_U_EXTRA'
   - '&u_to_U_BASE'
   - ''
   - UP
@@ -224,7 +224,7 @@ layers:
   - DOWN
   - UP
   - RIGHT
-  - {t: '''', s: '"'}
+  - '&td0'
   - LCTRL
   - LALT
   - RALT
@@ -238,7 +238,7 @@ layers:
   - PG DN
   - PG UP
   - END
-  - ESC
+  - RCTRL
   - ''
   - {type: held}
   - ''
@@ -249,7 +249,7 @@ layers:
   - TAB
   - '&bootloader'
   - '&u_to_U_TAP'
-  - ''
+  - '&u_to_U_EXTRA'
   - '&u_to_U_BASE'
   - ''
   - '&mmv MOVE_UP'
@@ -273,7 +273,7 @@ layers:
   - '&mmv MOVE_DOWN'
   - '&mmv MOVE_UP'
   - '&mmv MOVE_RIGHT'
-  - {t: '''', s: '"'}
+  - '&td0'
   - LCTRL
   - LALT
   - RALT
@@ -281,13 +281,13 @@ layers:
   - '&u_to_U_MOUSE'
   - ''
   - MUTE
-  - '&msc SCRL_DOWN'
+  - '&mmv MOVE_DOWN'
   - ''
   - '&msc SCRL_LEFT'
   - '&msc SCRL_DOWN'
   - '&msc SCRL_UP'
   - '&msc SCRL_RIGHT'
-  - ESC
+  - RCTRL
   - ''
   - ''
   - {type: held}
@@ -298,15 +298,15 @@ layers:
   - TAB
   - '&bootloader'
   - '&u_to_U_TAP'
-  - ''
+  - '&u_to_U_EXTRA'
   - '&u_to_U_BASE'
   - ''
   - UP
-  - RGB TOG
-  - RGB EFF
-  - RGB SPI
-  - RGB BRI
-  - RGB BRD
+  - {t: RGB TOG, s: RGB OFF}
+  - {t: RGB EFF, s: RGB EFR}
+  - {t: RGB HUI, s: RGB HUD}
+  - {t: RGB SAI, s: RGB SAD}
+  - {t: RGB BRI, s: RGB BRD}
   - BSPC
   - '&td0'
   - ''
@@ -317,12 +317,12 @@ layers:
   - LEFT
   - ENTER
   - RIGHT
-  - BT CLR
+  - {t: EP TOG, s: EP OFF}
   - PREV
   - VOL DN
   - VOL UP
   - NEXT
-  - {t: '''', s: '"'}
+  - '&td0'
   - LCTRL
   - LALT
   - RALT
@@ -336,7 +336,7 @@ layers:
   - {t: BT, h: '1', s: '&u_macro_u_bt_sel_1'}
   - {t: BT, h: '2', s: '&u_macro_u_bt_sel_2'}
   - {t: BT, h: '3', s: '&u_macro_u_bt_sel_3'}
-  - ESC
+  - RCTRL
   - {type: held}
   - ''
   - ''
@@ -353,7 +353,7 @@ layers:
   - UP
   - ''
   - '&u_to_U_BASE'
-  - ''
+  - '&u_to_U_EXTRA'
   - '&u_to_U_TAP'
   - '&bootloader'
   - BSPC
@@ -371,7 +371,7 @@ layers:
   - ''
   - ''
   - ''
-  - {t: '''', s: '"'}
+  - '&td0'
   - LCTRL
   - '`'
   - '1'
@@ -385,7 +385,7 @@ layers:
   - '&u_to_U_NAV'
   - RALT
   - LALT
-  - ESC
+  - RCTRL
   - .
   - '0'
   - '-'
@@ -402,7 +402,7 @@ layers:
   - UP
   - ''
   - '&u_to_U_BASE'
-  - ''
+  - '&u_to_U_EXTRA'
   - '&u_to_U_TAP'
   - '&bootloader'
   - BSPC
@@ -420,7 +420,7 @@ layers:
   - ''
   - ''
   - ''
-  - {t: '''', s: '"'}
+  - '&td0'
   - LCTRL
   - '~'
   - '!'
@@ -434,7 +434,7 @@ layers:
   - '&u_to_U_MOUSE'
   - RALT
   - LALT
-  - ESC
+  - RCTRL
   - (
   - )
   - _
@@ -449,9 +449,9 @@ layers:
   - F9
   - PSCRN
   - UP
-  - F7
-  - '&u_to_U_BASE'
   - '&sys_reset'
+  - '&u_to_U_BASE'
+  - '&u_to_U_EXTRA'
   - '&u_to_U_TAP'
   - '&bootloader'
   - BSPC
@@ -469,7 +469,7 @@ layers:
   - ''
   - ''
   - ''
-  - {t: '''', s: '"'}
+  - '&td0'
   - LCTRL
   - F10
   - F1
@@ -483,7 +483,7 @@ layers:
   - '&u_to_U_MEDIA'
   - RALT
   - LALT
-  - ESC
+  - RCTRL
   - APP
   - ''
   - SPACE
