@@ -1,0 +1,48 @@
+when:
+  event: tag
+
+depends_on:
+  - name: build
+    optional: true
+
+variables:
+  - &img "zmkfirmware/zmk-build-arm:stable"
+  - &oras "ghcr.io/oras-project/oras:v1.3.3"
+
+steps:
+  oci_pull:
+    image: *oras
+    environment:
+      REGISTRY_PASSWORD:
+        from_secret: registry_password
+    commands:
+      - mkdir -p firmware
+      - |
+        for i in $(seq 1 5); do
+          echo "$REGISTRY_PASSWORD" | oras login --plain-http registry-service.registry.svc:5000 -u admin --password-stdin \
+            && oras pull --plain-http registry-service.registry.svc:5000/zmk-firmware:sha-${CI_COMMIT_SHA} -o firmware \
+            && exit 0
+          echo "registry op failed (attempt $i/5), retrying in 10s..."
+          sleep 10
+        done
+        echo "All 5 retries exhausted"
+        exit 1
+
+  validate:
+    image: *img
+    depends_on: [oci_pull]
+    commands:
+      - cd firmware
+      - sha256sum -c SHA256SUMS
+
+  release:
+    image: woodpeckerci/plugin-release
+    depends_on: [validate]
+    settings:
+      files:
+        - firmware/*.uf2
+        - firmware/*.bin
+        - firmware/*.zip
+        - firmware/*.tar.gz
+      api_key:
+        from_secret: forgejo_release_token

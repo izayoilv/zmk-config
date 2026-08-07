@@ -1,0 +1,93 @@
+when:
+  event: [push, manual]
+  path:
+    include:
+      - config/*.keymap
+      - config/*.dtsi
+      - config/west.yml
+      - boards/**/*
+      - .woodpecker/*
+
+variables:
+  - &img "zmkfirmware/zmk-build-arm:stable"
+  - &oras "ghcr.io/oras-project/oras:v1.3.3"
+
+steps:
+  init:
+    image: *img
+    volumes:
+      - zmk-west-cache:/cache/west
+    commands:
+      - mkdir -p /cache/west
+      - rm -rf /cache/west/.zmk-module /cache/west/config
+      - mkdir -p /cache/west/.zmk-module
+      - cp -a boards zephyr /cache/west/.zmk-module/
+      - cp -a config /cache/west/config
+      - cd /cache/west
+      - if [ ! -d .west ]; then west init -l config; fi
+      - west update --fetch-opt=--filter=tree:0
+      - west zephyr-export
+
+  build_right:
+    image: *img
+    depends_on: [init]
+    volumes:
+      - zmk-west-cache:/cache/west
+    commands:
+      - cd /cache/west
+      - west build -s zmk/app -d build/right -b nice_nano_v2 -- -DZMK_EXTRA_MODULES=/cache/west/.zmk-module -DZMK_CONFIG=/cache/west/config -DSHIELD="eyelash_corne_right nice_oled"
+
+  build_left:
+    image: *img
+    depends_on: [init]
+    volumes:
+      - zmk-west-cache:/cache/west
+    commands:
+      - cd /cache/west
+      - west build -s zmk/app -d build/left -b nice_nano_v2 -S studio-rpc-usb-uart -- -DZMK_EXTRA_MODULES=/cache/west/.zmk-module -DZMK_CONFIG=/cache/west/config -DSHIELD="eyelash_corne_left nice_oled" -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
+
+  build_reset:
+    image: *img
+    depends_on: [init]
+    volumes:
+      - zmk-west-cache:/cache/west
+    commands:
+      - cd /cache/west
+      - west build -s zmk/app -d build/reset -b nice_nano_v2 -- -DZMK_EXTRA_MODULES=/cache/west/.zmk-module -DZMK_CONFIG=/cache/west/config -DSHIELD="settings_reset"
+
+  package:
+    image: *img
+    depends_on: [build_right, build_left, build_reset]
+    volumes:
+      - zmk-west-cache:/cache/west
+    commands:
+      - mkdir -p firmware
+      - cp /cache/west/build/right/zephyr/zmk.uf2 firmware/eyelash_corne_right-nice_nano_v2-zmk.uf2 2>/dev/null || cp /cache/west/build/right/zephyr/zmk.bin firmware/eyelash_corne_right-nice_nano_v2-zmk.bin 2>/dev/null || true
+      - cp /cache/west/build/left/zephyr/zmk.uf2 firmware/eyelash_corne_studio_left-nice_nano_v2-zmk.uf2 2>/dev/null || cp /cache/west/build/left/zephyr/zmk.bin firmware/eyelash_corne_studio_left-nice_nano_v2-zmk.bin 2>/dev/null || true
+      - cp /cache/west/build/reset/zephyr/zmk.uf2 firmware/settings_reset-nice_nano_v2-zmk.uf2 2>/dev/null || cp /cache/west/build/reset/zephyr/zmk.bin firmware/settings_reset-nice_nano_v2-zmk.bin 2>/dev/null || true
+      - cd firmware
+      - files=""; for f in *.uf2 *.bin; do [ -e "$f" ] && files="$files $f"; done
+      - python3 -m zipfile -c eyelash_corne-firmware.zip $files
+      - tar czf eyelash_corne-firmware.tar.gz $files
+      - sha256sum * > SHA256SUMS
+      - ls -la
+
+  oci_upload:
+    image: *oras
+    depends_on: [package]
+    environment:
+      REGISTRY_PASSWORD:
+        from_secret: registry_password
+    commands:
+      - cd firmware
+      - files=""; for f in *.uf2 *.bin *.zip *.tar.gz SHA256SUMS; do [ -e "$f" ] && files="$files $f"; done
+      - |
+        for i in $(seq 1 5); do
+          echo "$REGISTRY_PASSWORD" | oras login --plain-http registry-service.registry.svc:5000 -u admin --password-stdin \
+            && oras push --plain-http registry-service.registry.svc:5000/zmk-firmware:sha-${CI_COMMIT_SHA} $files \
+            && exit 0
+          echo "registry op failed (attempt $i/5), retrying in 10s..."
+          sleep 10
+        done
+        echo "All 5 retries exhausted"
+        exit 1

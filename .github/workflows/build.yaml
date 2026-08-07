@@ -1,0 +1,8 @@
+name: Build
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    uses: cormoran/zmk/.github/workflows/build-user-config.yml@v0.3-branch+dya
+    with:
+      build_matrix_path: build.yaml
+      archive_name: eyelash_corne

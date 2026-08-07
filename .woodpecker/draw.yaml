@@ -1,0 +1,64 @@
+when:
+  event: [push, manual]
+  path:
+    include:
+      - config/*.keymap
+      - config/*.dtsi
+      - config/west.yml
+      - boards/**/*
+      - .woodpecker/*
+
+variables:
+  - &py "python:3.14.7-alpine"
+
+steps:
+  fetch:
+    image: *py
+    volumes:
+      - zmk-west-cache:/cache/drawer
+    commands:
+      - apk add --no-cache git gcc musl-dev python3-dev
+      - if [ ! -d /cache/drawer/venv ]; then python -m venv /cache/drawer/venv; fi
+      - /cache/drawer/venv/bin/pip install --quiet keymap-drawer==0.23.0 west
+      - mkdir -p /cache/drawer/west
+      - rm -rf /cache/drawer/.west /cache/drawer/west/config /cache/drawer/west/boards
+      - cp -a config boards /cache/drawer/west/
+      - cd /cache/drawer/west
+      - if [ ! -d .west ]; then /cache/drawer/venv/bin/west init -l config; fi
+      - /cache/drawer/venv/bin/west config --local manifest.project-filter " -zmk,-zephyr"
+      - /cache/drawer/venv/bin/west update --fetch-opt=--filter=tree:0
+
+  draw:
+    image: *py
+    depends_on: [fetch]
+    volumes:
+      - zmk-west-cache:/cache/drawer
+    commands:
+      - mkdir -p keymap-drawer
+      - /cache/drawer/venv/bin/keymap parse -z /cache/drawer/west/config/eyelash_corne.keymap > keymap-drawer/eyelash_corne.yaml
+      - |
+        dts=""
+        for f in boards/*/*/eyelash_corne-layouts.dtsi boards/*/*/eyelash_corne-layout.dtsi; do
+          if [ -f "$f" ]; then dts="$f"; fi
+        done
+        if [ -n "$dts" ]; then
+          /cache/drawer/venv/bin/keymap draw keymap-drawer/eyelash_corne.yaml -d "$dts" > keymap-drawer/eyelash_corne.svg
+        else
+          /cache/drawer/venv/bin/keymap draw keymap-drawer/eyelash_corne.yaml > keymap-drawer/eyelash_corne.svg
+        fi
+      - ls -la keymap-drawer
+
+  commit:
+    image: *py
+    depends_on: [draw]
+    environment:
+      FORGEJO_TOKEN:
+        from_secret: forgejo_release_token
+    commands:
+      - apk add --no-cache git
+      - git config user.name "keymap-drawer bot"
+      - git config user.email "keymap-drawer@kudofools.dev"
+      - git add keymap-drawer/
+      - if git diff --cached --quiet; then echo "no changes to commit"; exit 0; fi
+      - git commit -m "keymap-drawer render [skip ci]"
+      - git push "https://oauth2:$${FORGEJO_TOKEN}@forgejo.kudofools.dev/izayoilv/zmk-config.git" HEAD:${CI_COMMIT_BRANCH}

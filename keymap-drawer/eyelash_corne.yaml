@@ -1,0 +1,495 @@
+layout: {zmk_keyboard: eyelash_corne}
+layers:
+  Base:
+  - TAB
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - UP
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - BSPC
+  - '&td0'
+  - A
+  - S
+  - D
+  - F
+  - G
+  - LEFT
+  - ENTER
+  - RIGHT
+  - H
+  - J
+  - K
+  - L
+  - ;
+  - {t: '''', s: '"'}
+  - LCTRL
+  - {t: Z, h: Button}
+  - {t: X, h: LALT}
+  - {t: C, h: RALT}
+  - V
+  - B
+  - MUTE
+  - DOWN
+  - N
+  - M
+  - {t: ',', h: RALT}
+  - {t: ., h: LALT}
+  - {t: /, h: Button}
+  - ESC
+  - {t: LGUI, h: Media}
+  - Nav
+  - {t: SPACE, h: Mouse}
+  - {t: RET, h: Sym}
+  - Num
+  - {t: DEL, h: Fun}
+  Extra:
+  - TAB
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - UP
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - BSPC
+  - '&td0'
+  - A
+  - S
+  - D
+  - F
+  - G
+  - LEFT
+  - ENTER
+  - RIGHT
+  - H
+  - J
+  - K
+  - L
+  - ;
+  - {t: '''', s: '"'}
+  - LCTRL
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - MUTE
+  - DOWN
+  - N
+  - M
+  - ','
+  - .
+  - /
+  - ESC
+  - LGUI
+  - ''
+  - TAB
+  - RET
+  - ''
+  - DEL
+  Tap:
+  - TAB
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - UP
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - BSPC
+  - '&td0'
+  - A
+  - S
+  - D
+  - F
+  - G
+  - LEFT
+  - ENTER
+  - RIGHT
+  - H
+  - J
+  - K
+  - L
+  - ;
+  - {t: '''', s: '"'}
+  - LCTRL
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - MUTE
+  - DOWN
+  - N
+  - M
+  - ','
+  - .
+  - /
+  - ESC
+  - LGUI
+  - ''
+  - TAB
+  - RET
+  - ''
+  - DEL
+  Button:
+  - TAB
+  - UNDO
+  - Sft+DEL
+  - Ctl+INS
+  - Sft+INS
+  - AGAIN
+  - UP
+  - AGAIN
+  - Sft+INS
+  - Ctl+INS
+  - Sft+DEL
+  - UNDO
+  - BSPC
+  - '&td0'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - LEFT
+  - ENTER
+  - RIGHT
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: '''', s: '"'}
+  - LCTRL
+  - {t: UNDO, type: held}
+  - Sft+DEL
+  - Ctl+INS
+  - Sft+INS
+  - AGAIN
+  - MUTE
+  - DOWN
+  - AGAIN
+  - Sft+INS
+  - Ctl+INS
+  - Sft+DEL
+  - UNDO
+  - ESC
+  - '&mkp MB3'
+  - '&mkp MB1'
+  - '&mkp MB2'
+  - '&mkp MB2'
+  - '&mkp MB1'
+  - '&mkp MB3'
+  Nav:
+  - TAB
+  - '&bootloader'
+  - '&u_to_U_TAP'
+  - ''
+  - '&u_to_U_BASE'
+  - ''
+  - UP
+  - AGAIN
+  - Sft+INS
+  - Ctl+INS
+  - Sft+DEL
+  - UNDO
+  - BSPC
+  - '&td0'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - LEFT
+  - ENTER
+  - RIGHT
+  - {t: '&caps_word', s: CAPS}
+  - LEFT
+  - DOWN
+  - UP
+  - RIGHT
+  - {t: '''', s: '"'}
+  - LCTRL
+  - LALT
+  - RALT
+  - '&u_to_U_NUM'
+  - '&u_to_U_NAV'
+  - ''
+  - MUTE
+  - DOWN
+  - INS
+  - HOME
+  - PG DN
+  - PG UP
+  - END
+  - ESC
+  - ''
+  - {type: held}
+  - ''
+  - RET
+  - ''
+  - DEL
+  Mouse:
+  - TAB
+  - '&bootloader'
+  - '&u_to_U_TAP'
+  - ''
+  - '&u_to_U_BASE'
+  - ''
+  - '&mmv MOVE_UP'
+  - AGAIN
+  - Sft+INS
+  - Ctl+INS
+  - Sft+DEL
+  - UNDO
+  - BSPC
+  - '&td0'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&mmv MOVE_LEFT'
+  - '&mkp MB1'
+  - '&mmv MOVE_RIGHT'
+  - ''
+  - '&mmv MOVE_LEFT'
+  - '&mmv MOVE_DOWN'
+  - '&mmv MOVE_UP'
+  - '&mmv MOVE_RIGHT'
+  - {t: '''', s: '"'}
+  - LCTRL
+  - LALT
+  - RALT
+  - '&u_to_U_SYM'
+  - '&u_to_U_MOUSE'
+  - ''
+  - MUTE
+  - '&msc SCRL_DOWN'
+  - ''
+  - '&msc SCRL_LEFT'
+  - '&msc SCRL_DOWN'
+  - '&msc SCRL_UP'
+  - '&msc SCRL_RIGHT'
+  - ESC
+  - ''
+  - ''
+  - {type: held}
+  - '&mkp MB2'
+  - '&mkp MB1'
+  - '&mkp MB3'
+  Media:
+  - TAB
+  - '&bootloader'
+  - '&u_to_U_TAP'
+  - ''
+  - '&u_to_U_BASE'
+  - ''
+  - UP
+  - RGB TOG
+  - RGB EFF
+  - RGB SPI
+  - RGB BRI
+  - RGB BRD
+  - BSPC
+  - '&td0'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - LEFT
+  - ENTER
+  - RIGHT
+  - BT CLR
+  - PREV
+  - VOL DN
+  - VOL UP
+  - NEXT
+  - {t: '''', s: '"'}
+  - LCTRL
+  - LALT
+  - RALT
+  - '&u_to_U_FUN'
+  - '&u_to_U_MEDIA'
+  - ''
+  - MUTE
+  - DOWN
+  - {t: OUT TOG, s: OUT USB}
+  - {t: BT, h: '0', s: '&u_macro_u_bt_sel_0'}
+  - {t: BT, h: '1', s: '&u_macro_u_bt_sel_1'}
+  - {t: BT, h: '2', s: '&u_macro_u_bt_sel_2'}
+  - {t: BT, h: '3', s: '&u_macro_u_bt_sel_3'}
+  - ESC
+  - {type: held}
+  - ''
+  - ''
+  - STOP
+  - PP
+  - MUTE
+  Num:
+  - TAB
+  - '['
+  - '7'
+  - '8'
+  - '9'
+  - ']'
+  - UP
+  - ''
+  - '&u_to_U_BASE'
+  - ''
+  - '&u_to_U_TAP'
+  - '&bootloader'
+  - BSPC
+  - '&td0'
+  - ;
+  - '4'
+  - '5'
+  - '6'
+  - '='
+  - LEFT
+  - ENTER
+  - RIGHT
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: '''', s: '"'}
+  - LCTRL
+  - '`'
+  - '1'
+  - '2'
+  - '3'
+  - \
+  - MUTE
+  - DOWN
+  - ''
+  - '&u_to_U_NUM'
+  - '&u_to_U_NAV'
+  - RALT
+  - LALT
+  - ESC
+  - .
+  - '0'
+  - '-'
+  - ''
+  - {type: held}
+  - ''
+  Sym:
+  - TAB
+  - '{'
+  - '&'
+  - '*'
+  - (
+  - '}'
+  - UP
+  - ''
+  - '&u_to_U_BASE'
+  - ''
+  - '&u_to_U_TAP'
+  - '&bootloader'
+  - BSPC
+  - '&td0'
+  - ':'
+  - $
+  - '%'
+  - ^
+  - +
+  - LEFT
+  - ENTER
+  - RIGHT
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: '''', s: '"'}
+  - LCTRL
+  - '~'
+  - '!'
+  - '@'
+  - '#'
+  - '|'
+  - MUTE
+  - DOWN
+  - ''
+  - '&u_to_U_SYM'
+  - '&u_to_U_MOUSE'
+  - RALT
+  - LALT
+  - ESC
+  - (
+  - )
+  - _
+  - {type: held}
+  - ''
+  - ''
+  Fun:
+  - TAB
+  - F12
+  - F7
+  - F8
+  - F9
+  - PSCRN
+  - UP
+  - F7
+  - '&u_to_U_BASE'
+  - '&sys_reset'
+  - '&u_to_U_TAP'
+  - '&bootloader'
+  - BSPC
+  - '&td0'
+  - F11
+  - F4
+  - F5
+  - F6
+  - SLCK
+  - LEFT
+  - ENTER
+  - RIGHT
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: '''', s: '"'}
+  - LCTRL
+  - F10
+  - F1
+  - F2
+  - F3
+  - PAUSE BREAK
+  - MUTE
+  - DOWN
+  - ''
+  - '&u_to_U_FUN'
+  - '&u_to_U_MEDIA'
+  - RALT
+  - LALT
+  - ESC
+  - APP
+  - ''
+  - SPACE
+  - ''
+  - ''
+  - {type: held}
+combos:
+- p: [1, 15, 29]
+  k: '&soft_off'
