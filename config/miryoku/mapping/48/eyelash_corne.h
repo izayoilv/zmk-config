@@ -15,8 +15,8 @@
      N30, N31, K32, K33, K34,      K35, K36, K37, N38, N39 \
 ) \
 &kp TAB  K00  K01  K02  K03  K04       &kp UP     K05  K06  K07  K08  K09  &kp BSPC \
-&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  &kp SEMI  &sq_dqt \
-&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp ESC \
+&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  &sq_dqt  &td0 \
+&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp RCTRL \
                     K32  K33  K34                       K35  K36  K37
 
 #endif
@@ -30,8 +30,8 @@
      N30, N31, K32, K33, K34,      K35, K36, K37, N38, N39 \
 ) \
 &kp TAB  K00  K01  K02  K03  K04       &kp UP     K05  K06  K07  K08  K09  &kp BSPC \
-&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  K19  &sq_dqt \
-&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp ESC \
+&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  K19  &td0 \
+&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp RCTRL \
                     K32  K33  K34                       K35  K36  K37
 
 #endif
@@ -45,8 +45,8 @@
      N30, N31, K32, K33, K34,      K35, K36, K37, N38, N39 \
 ) \
 &kp TAB  K00  K01  K02  K03  K04       &kp UP     K05  K06  K07  K08  K09  &kp BSPC \
-&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  K19  &sq_dqt \
-&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp ESC \
+&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  K19  &td0 \
+&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp RCTRL \
                     K32  K33  K34                       K35  K36  K37
 
 #endif
@@ -60,8 +60,8 @@
      N30, N31, K32, K33, K34,      K35, K36, K37, N38, N39 \
 ) \
 &kp TAB  K00  K01  K02  K03  K04       &kp UP     K05  K06  K07  K08  K09  &kp BSPC \
-&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  K19  &sq_dqt \
-&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp ESC \
+&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  K19  &td0 \
+&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp RCTRL \
                     K32  K33  K34                       K35  K36  K37
 
 #endif
@@ -75,8 +75,8 @@
      N30, N31, K32, K33, K34,      K35, K36, K37, N38, N39 \
 ) \
 &kp TAB  K00  K01  K02  K03  K04       &mmv MOVE_UP     K05  K06  K07  K08  K09  &kp BSPC \
-&td0     K10  K11  K12  K13  K14       &mmv MOVE_LEFT  &mkp MB1  &mmv MOVE_RIGHT  K15  K16  K17  K18  K19  &sq_dqt \
-&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &msc SCRL_DOWN  K25  K26  K27  K28  K29  &kp ESC \
+&td0     K10  K11  K12  K13  K14       &mmv MOVE_LEFT  &mkp MB1  &mmv MOVE_RIGHT  K15  K16  K17  K18  K19  &td0 \
+&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &mmv MOVE_DOWN  K25  K26  K27  K28  K29  &kp RCTRL \
                     K32  K33  K34                       K35  K36  K37
 
 #endif
@@ -89,9 +89,9 @@
      K20, K21, K22, K23, K24,      K25, K26, K27, K28, K29, \
      N30, N31, K32, K33, K34,      K35, K36, K37, N38, N39 \
 ) \
-&kp TAB  K00  K01  K02  K03  K04       &kp UP     U_RGB_TOG  U_RGB_EFF  &rgb_ug RGB_SPI  U_RGB_BRI  &rgb_ug RGB_BRD  &kp BSPC \
-&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  K19  &sq_dqt \
-&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp ESC \
+&kp TAB  K00  K01  K02  K03  K04       &kp UP     U_RGB_TOG  U_RGB_EFF  U_RGB_HUI  U_RGB_SAI  U_RGB_BRI  &kp BSPC \
+&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  K19  &td0 \
+&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp RCTRL \
                     K32  K33  K34                       K35  K36  K37
 
 #endif
@@ -105,8 +105,8 @@
      N30, N31, K32, K33, K34,      K35, K36, K37, N38, N39 \
 ) \
 &kp TAB  K00  K01  K02  K03  K04       &kp UP     K05  K06  K07  K08  K09  &kp BSPC \
-&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  K19  &sq_dqt \
-&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp ESC \
+&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  K19  &td0 \
+&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp RCTRL \
                     K32  K33  K34                       K35  K36  K37
 
 #endif
@@ -120,8 +120,8 @@
      N30, N31, K32, K33, K34,      K35, K36, K37, N38, N39 \
 ) \
 &kp TAB  K00  K01  K02  K03  K04       &kp UP     K05  K06  K07  K08  K09  &kp BSPC \
-&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  K19  &sq_dqt \
-&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp ESC \
+&td0     K10  K11  K12  K13  K14       &kp LEFT  &kp ENTER  &kp RIGHT  K15  K16  K17  K18  K19  &td0 \
+&kp LCTRL  K20  K21  K22  K23  K24  &kp C_MUTE   &kp DOWN  K25  K26  K27  K28  K29  &kp RCTRL \
                     K32  K33  K34                       K35  K36  K37
 
 #endif

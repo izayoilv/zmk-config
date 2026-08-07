@@ -2,9 +2,7 @@ when:
   event: [push, manual]
   path:
     include:
-      - config/*.keymap
-      - config/*.dtsi
-      - config/west.yml
+      - config/**/*
       - boards/**/*
       - .woodpecker/*
 
