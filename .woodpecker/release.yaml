@@ -12,15 +12,11 @@ variables:
 steps:
   oci_pull:
     image: *oras
-    environment:
-      REGISTRY_PASSWORD:
-        from_secret: registry_password
     commands:
       - mkdir -p firmware
       - |
         for i in $(seq 1 5); do
-          echo "$REGISTRY_PASSWORD" | oras login --plain-http zot.zot.svc:5000 -u admin --password-stdin \
-            && oras pull --plain-http zot.zot.svc:5000/zmk-firmware:sha-$${CI_COMMIT_SHA} -o firmware \
+          oras pull --plain-http zot.zot.svc:5000/public/zmk-firmware:sha-$${CI_COMMIT_SHA} -o firmware \
             && exit 0
           echo "registry op failed (attempt $i/5), retrying in 10s..."
           sleep 10
