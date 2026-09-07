@@ -81,8 +81,8 @@ steps:
       - files=""; for f in *.uf2 *.bin *.zip *.tar.gz SHA256SUMS; do [ -e "$f" ] && files="$files $f"; done
       - |
         for i in $(seq 1 5); do
-          echo "$REGISTRY_PASSWORD" | oras login --plain-http registry-service.registry.svc:5000 -u admin --password-stdin \
-            && oras push --plain-http registry-service.registry.svc:5000/zmk-firmware:sha-$${CI_COMMIT_SHA} $files \
+          echo "$REGISTRY_PASSWORD" | oras login --plain-http zot.zot.svc:5000 -u admin --password-stdin \
+            && oras push --plain-http zot.zot.svc:5000/zmk-firmware:sha-$${CI_COMMIT_SHA} $files \
             && exit 0
           echo "registry op failed (attempt $i/5), retrying in 10s..."
           sleep 10
